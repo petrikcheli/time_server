@@ -1,0 +1,7 @@
+/home/petricheli/time_server/build/Desktop_Qt_6_7_2-Release/CMakeFiles/time_server.dir
+/home/petricheli/time_server/build/Desktop_Qt_6_7_2-Release/CMakeFiles/edit_cache.dir
+/home/petricheli/time_server/build/Desktop_Qt_6_7_2-Release/CMakeFiles/rebuild_cache.dir
+/home/petricheli/time_server/build/Desktop_Qt_6_7_2-Release/CMakeFiles/list_install_components.dir
+/home/petricheli/time_server/build/Desktop_Qt_6_7_2-Release/CMakeFiles/install.dir
+/home/petricheli/time_server/build/Desktop_Qt_6_7_2-Release/CMakeFiles/install/local.dir
+/home/petricheli/time_server/build/Desktop_Qt_6_7_2-Release/CMakeFiles/install/strip.dir
