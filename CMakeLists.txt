@@ -5,7 +5,8 @@ project(time_server LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(time_server main.cpp)
+add_executable(time_server main.cpp
+    server.h server.cpp)
 
 include(GNUInstallDirs)
 install(TARGETS time_server
