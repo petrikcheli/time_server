@@ -2,7 +2,9 @@
 #include <iostream>
 
 Server::Server() {}
-Server::~Server(){}
+Server::~Server(){
+    close_all();
+}
 
 int Server::start_server(){
 
@@ -86,4 +88,22 @@ void Server::close_server(){
         close(socket_server);
         socket_server = -1;
     }
+}
+
+void Server::close_all(){
+    Server::close_client();
+    Server::close_server();
+}
+
+int Server::send_time_client(){
+
+    struct Time_server time_s;
+    time_s.seconds = time(NULL);
+
+    if(send(socket_client, &time_s, sizeof(time_s), 0) < 0){
+        std::cerr << "Не удалось отправить время клиенту" << std::endl;
+        return -1;
+    }
+
+    return 0;
 }

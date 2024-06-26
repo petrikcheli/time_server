@@ -14,10 +14,38 @@ int main(){
 
     Server::Command command;
 
-    if(server->start_server() < 0) return -1;
-    if(server->listen_server() < 0) return -1;
-    if(server->accept_client_to_server()< 0) return -1;
-    if(server->recv_server(command) < 0) return -1;
+    if(server->start_server() < 0){
+        delete server;
+        return -1;
+    }
+
+    if(server->listen_server() < 0){
+        delete server;
+        return -1;
+    }
+    if(server->accept_client_to_server()< 0){
+        delete server;
+        return -1;
+    }
+
+    while(true){
+
+        if(server->recv_server(command) < 0) {
+            delete server;
+            return -1;
+        }
+        if(command.command_type == 1) {
+            if(server->send_time_client()){
+                delete server;
+                return -1;
+            }
+        }
+        if(command.command_type == 2){
+            break;
+        }
+    }
+
+
     server->close_client();
     server->close_server();
 
