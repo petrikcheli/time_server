@@ -45,6 +45,7 @@ int main(){
         if(command.command_type == 2){
             break;
         }
+        server->close_client();
     }
 
 
