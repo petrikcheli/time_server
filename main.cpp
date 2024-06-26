@@ -23,12 +23,14 @@ int main(){
         delete server;
         return -1;
     }
-    if(server->accept_client_to_server()< 0){
-        delete server;
-        return -1;
-    }
+
 
     while(true){
+
+        if(server->accept_client_to_server()< 0){
+            delete server;
+            return -1;
+        }
 
         if(server->recv_server(command) < 0) {
             delete server;
