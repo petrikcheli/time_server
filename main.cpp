@@ -10,6 +10,8 @@ using namespace std;
 
 int main(){
 
+    pid_t pid;
+
     Server* server = new Server();
 
     Server::Command command;
@@ -25,27 +27,31 @@ int main(){
     }
 
 
+
     while(true){
 
         if(server->accept_client_to_server()< 0){
             delete server;
             return -1;
         }
-
-        if(server->recv_server(command) < 0) {
-            delete server;
-            return -1;
-        }
-        if(command.command_type == 1) {
-            if(server->send_time_client()){
-                delete server;
-                return -1;
+        if((pid = fork())==0){
+            for(;;){
+                if(server->recv_server(command) < 0) {
+                    delete server;
+                    return -1;
+                }
+                if(command.command_type == 1) {
+                    if(server->send_time_client()){
+                        delete server;
+                        return -1;
+                    }
+                }
+                if(command.command_type == 2){
+                    break;
+                }
             }
         }
-        if(command.command_type == 2){
-            break;
-        }
-        server->close_client();
+
     }
 
 

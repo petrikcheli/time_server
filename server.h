@@ -11,7 +11,7 @@
 class Server
 {
     int PORT_SERVER = 8080;
-    const char* IP_SERVER = "192.168.31.45";
+    const char* IP_SERVER = "192.168.31.142";
 
     struct sockaddr_in server_addr;
     struct sockaddr_in client_addr;
